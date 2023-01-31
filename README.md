@@ -1,1 +1,1 @@
-# vivoscraper
+# Scraping project in python (scrapy, selenium)
