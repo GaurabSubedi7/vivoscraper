@@ -78,7 +78,11 @@ class VscrapeSpider(scrapy.Spider):
         if response.status == 200:
             items['product_name'] = response.css(selectors['product_name']).css('::text').get()
             items['product_url'] = product_url
-            items['product_price'] = float(response.css(selectors['product_price']).css('::text').get().split('$')[1])
+            product_price = response.css(selectors['product_price']).css('::text').get()
+            if product_price != None:
+                items['product_price'] = float(product_price.split('$')[1])
+            else:
+                items['product_price'] = 0.00
 
             items['product_description'] = response.xpath(selectors['product_description'] + '/text()').get()
 

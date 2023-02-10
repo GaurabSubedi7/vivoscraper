@@ -24,7 +24,7 @@ class VivoscraperPipeline:
         # check and update records
         for record in records:
             if all(item[key] == record['fields'][key] for key in ['product_name', 'product_url']):
-                if all(item[key] == record['fields'][key] for key in ['product_price', 'product_description']):
+                if all(item[key] == record['fields'][key] for key in ['product_price', 'product_description', 'product_price']):
                     print('Product Already Exist')
                 else:
                     my_table.update(record['id'], dict(item))
